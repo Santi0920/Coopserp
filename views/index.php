@@ -32,7 +32,7 @@
       <ul class="navbar-nav me-auto mb-lg-0">        
          <!-- DataCredito-->      
          <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="" id="data">Menú</a>
+          <a class="nav-link text-primary text-opacity-50" aria-current="page" href="./index.php" id="data">Menú</a>
         </li>
         <!-- DataCredito-->      
         <li class="nav-item">
@@ -219,7 +219,7 @@
                 <a href="#" class="text-light text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
               </div>
               <div class="mb-2">
-                <a href="#" class="text-light text-decoration-none"><i class="bi bi-github"></i> Github</a>
+                <a href="https://github.com/Santi0920/Coopserp" class="text-light text-decoration-none">Github </a>
               </div>
             </div>
             <p class="text-center text-white mt-4">Coopserp Web &copy; Todos Los derechos Reservados 2023 </p>

@@ -18,6 +18,7 @@
   </header>
   
   <!-- NAV DE LISTA-->
+  <a name="arriba"></a>
   <nav class="navbar navbar-expand-lg bg-body-secondary p-0" id="Menu">
     <div class="container-fluid">
       <!-- Coopserp.com-->
@@ -28,16 +29,17 @@
       </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- Foto Coopserp--> 
     <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="img/CoopserpPH.png" alt="Coopserp.icono" width="150px" height="60px" id="data"></a>
       <ul class="navbar-nav me-auto mb-lg-0">        
          <!-- DataCredito-->      
          <li class="nav-item">
           <a class="nav-link" aria-current="page" href="./index.php" id="data">Menú</a>
         </li>
-        <!-- DataCredito      
+        <!-- DataCredito-->      
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./datacredito.php" id="data">Datacrédito</a>
-        </li>-->
+          <a class="nav-link active text-primary text-opacity-50" aria-current="page" href="./datacredito.php" id="data">Datacrédito</a>
+        </li>
         <!-- Anticipados-->  
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="./anticipos.php" id="data">Anticipos</a>
@@ -82,8 +84,13 @@
 </div>
 
 <div class="container-fluid row p-5 mb-5">
-<form class="col-4">
+<form class="col-4" method="POST">
   <h2 class="text-center p-3 text-secondary"><b>Datacrédito</b></h2>
+  <?php 
+  include "../modules/conexion.php";
+  include "../controllers/registro_persona.php";
+  ?>
+  
   <!--Label1-->  
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nombre</label>
@@ -112,6 +119,7 @@
   </div>
  
   <button type="submit" class="btn btn-primary" name="btnregistrar" value="ok">Registrar</button>
+ 
 </form>
 
 <div class="col-8 p-5">
@@ -129,18 +137,26 @@
     </tr>
   </thead>
   <tbody>
+    <?php
+    include "../modules/conexion.php";
+    $sql = $conexion->query(" select * from empleado ");
+    while ($datos = $sql->fetch_object()) { ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
+      <td><?= $datos->IDempleado?></td>
+      <td><?= $datos->Nombre?></td>
+      <td><?= $datos->Apellidos?></td>
+      <td><?= $datos->Cedula?></td>
+      <td><?= $datos->Fecha_nac?></td>
+      <td><?= $datos->Correo?></td>
       <td>
         <a href="" class="btn btn-small btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
         <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-trash"></i></a>
       </td>
     </tr>
+    <?php }
+    ?>
+    
+   
     
   </tbody>
 </table>
@@ -163,7 +179,7 @@
             <div class="col-xs-12 col-md-6 col-lg-3 aling-elements">
               <p class="h5 mb-3 text-left"><b>Servicios</b></p>
               <div class="mb-2">
-                <a href="./datacredito.php" class="text-light text-decoration-none">Datacrédito</a>
+                <a href="#arriba" class="text-light text-decoration-none">Datacrédito</a>
               </div>
               <div class="mb-2">
                 <a href="./anticipos.php" class="text-light text-decoration-none">Anticipos</a>
@@ -196,7 +212,7 @@
                 <a href="#" class="text-light text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
               </div>
               <div class="mb-2">
-                <a href="#" class="text-light text-decoration-none"><i class="bi bi-github"></i> Github</a>
+                <a href="https://github.com/Santi0920/Coopserp" class="text-light text-decoration-none">Github</a>
               </div>
             </div>
             <p class="text-center text-white mt-4">Coopserp Web &copy; Todos Los derechos Reservados 2023 </p>

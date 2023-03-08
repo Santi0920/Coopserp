@@ -12,6 +12,7 @@
   
 <body>
 <!-- HEADER DEL CONTACTO-->
+<a name="arriba"></a>
   <header class="container-fluid d-flex justify-content-center top-fixed text-white" style="background-color: #005E56;">
     <p class="mb-0 p-2 fs-6">Contáctame 321-871-2282</p>
   </header>
@@ -28,27 +29,32 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <!-- Foto Coopserp--> 
-    <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="img/CoopserpPH.png" alt="Coopserp.icono" width="150px" height="60px" id="data"></a>
+  <!-- Foto Coopserp--> 
+  <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="img/CoopserpPH.png" alt="Coopserp.icono" width="150px" height="60px" id="data"></a>
       <ul class="navbar-nav me-auto mb-lg-0">        
+         <!-- DataCredito-->      
+         <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="./index.php" id="data">Menú</a>
+        </li>
         <!-- DataCredito-->      
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php" id="data">Menú</a>
+          <a class="nav-link active" aria-current="page" href="./datacredito.php" id="data">Datacrédito</a>
         </li>
         <!-- Anticipados-->  
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" id="data">Anticipos</a>
+          <a class="nav-link active text-primary text-opacity-50" aria-current="page" href="./anticipos.php" id="data">Anticipos</a>
         </li>
         <!-- Cuentas H-->  
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" id="data">Cuentas H</a>
+          <a class="nav-link active" aria-current="page" href="./cuentash.php" id="data">Cuentas H</a>
         </li>
          <!-- Cartera Castigada-->  
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" id="data">Cartera Castigada</a>
+          <a class="nav-link active" aria-current="page" href="./carteracastigada.php" id="data">Cartera Castigada</a>
         </li>
         <!-- Fondo de Garantia-->
         <li class="nav-item" >
-          <a class="nav-link active" aria-current="page" href="#" id="data">Fondo de Garantía</a>
+          <a class="nav-link active" aria-current="page" href="./fgarantia.php" id="data">Fondo de Garantía</a>
         </li>
       </ul>
     </div>
@@ -96,7 +102,7 @@
                 <a href="./datacredito.php" class="text-light text-decoration-none">Datacrédito</a>
               </div>
               <div class="mb-2">
-                <a href="./anticipos.php" class="text-light text-decoration-none">Anticipos</a>
+                <a href="#arriba" class="text-light text-decoration-none">Anticipos</a>
               </div>
               <div class="mb-2">
                 <a href="./cuentash.php" class="text-light text-decoration-none">Cuentas H</a>
@@ -126,7 +132,7 @@
                 <a href="#" class="text-light text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
               </div>
               <div class="mb-2">
-                <a href="#" class="text-light text-decoration-none"><i class="bi bi-github"></i> Github</a>
+                <a href="https://github.com/Santi0920/Coopserp" class="text-light text-decoration-none"><i class="bi bi-github"></i> Github</a>
               </div>
             </div>
             <p class="text-center text-white mt-4">Coopserp Web &copy; Todos Los derechos Reservados 2023 </p>
