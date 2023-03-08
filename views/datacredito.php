@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="index.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/logoo.png" type="img/png">
+    <script src="https://kit.fontawesome.com/5b973e91e5.js" crossorigin="anonymous"></script>
   </head>
   
   
@@ -27,28 +28,31 @@
       </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- Foto Coopserp--> 
     <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="img/CoopserpPH.png" alt="Coopserp.icono" width="150px" height="60px" id="data"></a>
       <ul class="navbar-nav me-auto mb-lg-0">        
-        <!-- DataCredito-->      
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php" id="data">Menú</a>
+         <!-- DataCredito-->      
+         <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="./index.php" id="data">Menú</a>
         </li>
+        <!-- DataCredito      
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./datacredito.php" id="data">Datacrédito</a>
+        </li>-->
         <!-- Anticipados-->  
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" id="data">Anticipos</a>
+          <a class="nav-link active" aria-current="page" href="./anticipos.php" id="data">Anticipos</a>
         </li>
         <!-- Cuentas H-->  
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" id="data">Cuentas H</a>
+          <a class="nav-link active" aria-current="page" href="./cuentash.php" id="data">Cuentas H</a>
         </li>
          <!-- Cartera Castigada-->  
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" id="data">Cartera Castigada</a>
+          <a class="nav-link active" aria-current="page" href="./carteracastigada.php" id="data">Cartera Castigada</a>
         </li>
         <!-- Fondo de Garantia-->
         <li class="nav-item" >
-          <a class="nav-link active" aria-current="page" href="#" id="data">Fondo de Garantía</a>
+          <a class="nav-link active" aria-current="page" href="./fgarantia.php" id="data">Fondo de Garantía</a>
         </li>
       </ul>
     </div>
@@ -77,7 +81,73 @@
         <p class="copyright text-center">&copy;Coopserp Web</p>
 </div>
 
+<div class="container-fluid row p-5 mb-5">
+<form class="col-4">
+  <h2 class="text-center p-3 text-secondary"><b>Datacrédito</b></h2>
+  <!--Label1-->  
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+    <input type="text" class="form-control" name="nombre">
+  </div>
+  <!--Label2--> 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+    <input type="text" class="form-control" name="apellidos">
+  </div>
+  <!--Label3-->
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Cédula</label>
+    <input type="text" class="form-control" name="cedula">
+  </div>
+  <!--Label4-->
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
+    <input type="date" class="form-control" name="fecha">
+  </div>
 
+  <!--Label5-->
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Correo</label>
+    <input type="text" class="form-control" name="correo">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary" name="btnregistrar" value="ok">Registrar</button>
+</form>
+
+<div class="col-8 p-5">
+<table class="table">
+  <thead class="" style="background-color: #005E56;">
+    <tr class="text-white">
+      <th scope="col">ID</th>
+      <th scope="col">NOMBRE(S)</th>
+      <th scope="col">APELLIDOS</th>
+      <th scope="col">CÉDULA</th>
+      <th scope="col">FECHA DE NACIMIENTO</th>
+      <th scope="col">CORREO</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>
+        <a href="" class="btn btn-small btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+        <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-trash"></i></a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</div>
+
+</div>
 
 
         <!-- Pie de pagina -->
