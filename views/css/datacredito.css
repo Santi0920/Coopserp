@@ -1,0 +1,59 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+
+#Menu li > a {
+font-size: 20px;
+font-weight:bold;
+color: #3f3f3f;
+}
+
+
+#Foto {
+margin-left: 15px;
+width: 20px;
+height: 20px;
+
+}
+
+
+#data {
+margin-left: 15px;
+right: 20px;
+
+
+}
+
+.filtrar{
+    
+
+}
+
+#modificar{
+    margin-top: -15%;
+}
+
+#linea{
+    margin-top: -40%;
+}
+
+#subir{
+    margin-bottom: 5%;
+}
+
+#izquierda{
+ margin-left: -85%;
+}
+
+#izquierda2{
+    margin-left: -68%;
+   }
+
+   #izquierda3{
+    margin-left: -65%;
+   }
+
+   hr {width: 100%;margin-left: auto;margin-right: auto; margin-top: auto;}
+

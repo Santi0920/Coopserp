@@ -1,7 +1,7 @@
 body {
         font-family: 'Montserrat', sans-serif;
         overflow-x: hidden;
-}
+    }
 
 
 #Menu li > a {
@@ -56,8 +56,3 @@ max-height: 42rem;
     -webkit-text-stroke: 2px black;
   }
 
-
-#derecha{
-    margin: auto;
-    background-color: #3f3f3f;
-}

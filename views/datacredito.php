@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Datacrédito</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="index.css" rel="stylesheet">
+    <link href="../views/css/datacredito.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/logoo.png" type="img/png">
     <script src="https://kit.fontawesome.com/5b973e91e5.js" crossorigin="anonymous"></script>
   </head>
@@ -16,7 +20,10 @@
   <header class="container-fluid d-flex justify-content-center top-fixed text-white" style="background-color: #005E56;">
     <p class="mb-0 p-2 fs-6">Contáctame 321-871-2282</p>
   </header>
-  
+  <?php 
+  include "../models/conexion.php";
+  include "../controllers/eliminar_persona.php";
+  ?>
   <!-- NAV DE LISTA-->
   <a name="arriba"></a>
   <nav class="navbar navbar-expand-lg bg-body-secondary p-0" id="Menu">
@@ -87,38 +94,38 @@
 <form class="col-4" method="POST">
   <h2 class="text-center p-3 text-secondary"><b>Datacrédito</b></h2>
   <?php 
-  include "../models/conexion.php";
+
   include "../controllers/registro_persona.php";
   ?>
   
   <!--Label1-->  
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">CÉDULA</label>
+    <label for="exampleInputEmail1" class="form-label fw-semibold">CÉDULA</label>
     <input type="text" class="form-control" name="cedula">
   </div>
   <!--Label2--> 
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">NOMBRE COMPLETO</label>
+    <label for="exampleInputEmail1" class="form-label fw-semibold">NOMBRE COMPLETO</label>
     <input type="text" class="form-control" name="nombre">
   </div>
   <!--Label3-->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">SCORE</label>
+    <label for="exampleInputEmail1" class="form-label fw-semibold">SCORE</label>
     <input type="text" class="form-control" name="score">
   </div>
   <!--Label4-->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">CUENTA ASOCIADA</label>
+    <label for="exampleInputEmail1" class="form-label fw-semibold">CUENTA ASOCIADA</label>
     <input type="text" class="form-control" name="cuenta">
   </div>
 
   <!--Label5-->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">AGENCIA</label>
+    <label for="exampleInputEmail1" class="form-label fw-semibold">AGENCIA</label>
     <input type="text" class="form-control" name="agencia">
   </div>
  
-  <button type="submit" class="btn btn-primary" name="btnregistrar" value="ok">Registrar</button>
+  <button  type="submit" class="btn btn-primary" name="btnregistrar" value="ok" style="background-color: #005E56;">Registrar</button>
  
 </form>
 
@@ -126,7 +133,7 @@
   <div class="mb-3">
     <form action="" method="post">
       <label for="campo">Buscar:</label>
-      <input type="text" name="campo" id="campo"></input>
+      <input type="text" name="campo" id="campo" class="form-control w-50 filtrar"></input>
     </form>  
   </div>
     
@@ -144,7 +151,8 @@
     </tr>
   </thead>
   <tbody id="content">
-    
+    <?php include "../controllers/modificar_persona.php";
+    ?>
   </tbody>
 </table>
 
@@ -229,6 +237,23 @@
         content.innerHTML = data
       }).catch(err => console.log({err}))
       }
+
+      function eliminar(){
+        var respuesta=confirm("Estas seguro que deseas eliminar?")
+        return respuesta
+      }
+
+      const inputs = document.querySelectorAll('input');
+
+inputs.forEach(el => {
+  el.addEventListener('blur', e => {
+    if(e.target.value) {
+      e.target.classList.add('dirty');
+    } else {
+      e.target.classList.remove('dirty');
+    }
+  })
+})
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

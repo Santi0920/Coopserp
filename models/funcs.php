@@ -102,7 +102,7 @@
         $stmt->bind_param('ssssisi', $usuario, $pass_hash, $nombre, $email, $activo, $token, $rol);
         
 
-        if ($stmt->execute){
+        if ($stmt->execute()){
             return $mysqli->insert_id;
         } else {
             return 0;

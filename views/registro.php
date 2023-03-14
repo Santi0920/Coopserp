@@ -1,7 +1,7 @@
 <?php
 
 require '../controllers/funcs.php';
-require '../modules/conexion.php';
+require '../models/conexion.php';
 
 $errors = array();
 
@@ -11,15 +11,10 @@ if(!empty($_POST)){
     $password = $mysqli->real_escape_string($_POST['password']);
     $con_password = $mysqli->real_escape_string($_POST['con_password']);
     $email = $mysqli->real_escape_string($_POST['email']);
-    $captcha = $mysqli->real_escape_string($_POST['g-recaptcha-response']);
 
     $activo = 0;
     $rol = 2;
-    $secret = '6LdQVvskAAAAALhDVBdpyTPgKFkbj1-wILYQuszV';
     //si lleva ! es porque tomara el else
-    if(!$captcha){
-        $errors[] = "Por favor verifica el Captcha";
-    }
 
     if(isNull($nombre, $usuario, $password, $con_password, $email))
     {
@@ -45,13 +40,6 @@ if(!empty($_POST)){
     {
         $errors[] = "El correo electronico $email ya existe";
     }
-
-    if(count($errors) == 0)
-    {
-        $response = file_get_contents(
-            "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
-
-        $arr = json_decode($response, TRUE); 
 
         if($arr['success'])
         {
@@ -80,9 +68,7 @@ if(!empty($_POST)){
                 $errors[] = "Error al Registrar";
             }   
         }
-        }
-
-            }else{
+        }else{
             
             $errors[] = "Error al comprobar Captcha";
             }
@@ -151,11 +137,6 @@ if(!empty($_POST)){
                                     <div class="col-md-9">
                                         <input type="email" class="form-control" name="email" placeholder="Email" value="<?php if(isset($email)) echo $email; ?>" required>
                                     </div>
-                            </div>
-
-                            <div class="form-group">
-                                    <label for="captcha" class="col-md-3 control-label"></label>
-                                    <div class="g-recaptcha col-md-9 mb-4" data-sitekey="6LdQVvskAAAAALhDVBdpyTPgKFkbj1-wILYQuszV"></div>
                             </div>
 
                                 <div class="col-md-offset-3 col-md-9">
