@@ -28,6 +28,8 @@ $where ORDER BY Nombre ASC";
 $resultado = $mysqli->query($sql);
 $num_rows = $resultado->num_rows;
 
+
+
 $html = '';
 
 if($num_rows > 0){
@@ -38,8 +40,13 @@ while($fila = $resultado->fetch_assoc()){
     $html .= '<td class="text-uppercase">'.$fila['Score'].'</td>';
     $html .= '<td class="text-uppercase">'.$fila['CuentaAsociada'].'</td>';
     $html .= '<td class="text-uppercase">'.$fila['Agencia'].'</td>';
-    $html .= '<td>
-    <form action="datacredito.php" method="post">
+    $html .= '<td class="text-uppercase">'.$fila['Score'].'</td>';
+    $html .= '<td class="text-uppercase">'.$fila['Score'].'</td>';
+    $html .= '<td class="text-uppercase">'.$fila['Score'].'</td>';
+    
+    $html .= '<td> 
+
+    <form action="" class="text-center"     id="subir" method="POST">
     
     <a href="datacredito.php" type="button" class="btn btn-small btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"><input type="hidden" name="cedula" value="<?php echo $cedula; ?>"><i class="fa-regular fa-pen-to-square">
     </i></a>
@@ -55,47 +62,47 @@ while($fila = $resultado->fetch_assoc()){
                 <hr>
 
                 <div class="modal-body">
-    </form>
     
-            <form class="text-center" id="subir" method="POST">
+    
   
             <!--Label1-->  
             <div class="mb-3">
-                <label for="exampleInputEmail1" id="izquierda" class="form-label fw-bold">CÉDULA</label>
-                <input type="text" class="form-control" name="cedula">
+                <label for="label" id="izquierda" class="form-label fw-bold" value="">CÉDULA</label>
+                <input type="text" class="form-control" name="cedula" value="'.$fila["Cedula"].'">
             </div>
             <!--Label2--> 
             <div class="mb-3">
-                <label for="exampleInputEmail1" id="izquierda3" class="form-label fw-bold">NOMBRE COMPLETO</label>
-                <input type="text" class="form-control" name="nombre">
+                <label for="label" id="izquierda3" class="form-label fw-bold">NOMBRE COMPLETO</label>
+                <input type="text" class="form-control" name="nombre" value="'.$fila["Nombre"].'">
             </div>
             <!--Label3-->
             <div class="mb-3">
-                <label for="exampleInputEmail1"  id="izquierda" class="form-label fw-bold">SCORE</label>
-                <input type="text" class="form-control" name="score">
+                <label for="label"  id="izquierda" class="form-label fw-bold">SCORE</label>
+                <input type="text" class="form-control" name="score" value="'.$fila["Score"].'">
             </div>
             <!--Label4-->
             <div class="mb-3 ">
-                <label for="exampleInputEmail1" id="izquierda2" class="form-label fw-bold">CUENTA ASOCIADA</label>
-                <input type="text" class="form-control" name="cuenta">
+                <label for="label" id="izquierda2" class="form-label fw-bold">CUENTA ASOCIADA</label>
+                <input type="text" class="form-control" name="cuenta" value="'.$fila["CuentaAsociada"].'">
             </div>
 
             <!--Label5-->
             <div class="mb-3">
-                <label for="exampleInputEmail1" id="izquierda" class="form-label fw-bold">AGENCIA</label>
-                <input type="text" class="form-control" name="agencia">
+                <label for="label" id="izquierda" class="form-label fw-bold">AGENCIA</label>
+                <input type="text" id="etiquetas" class="form-control" name="agencia" value="'.$fila["Agencia"].'">
             </div>
                 </div>
             <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" style="background-color: #005E56;">Guardar</button>
+                    <button type="submit"  name="editar" value="ok" class="btn btn-primary" style="background-color: #005E56;">Guardar</button>
              </div>
             </div>
         </div>
     </div>
-    
+    </form>
     </td>';
-    $html .= '<td><a href="" class=" btn btn-small btn-danger"><i class="fa-solid fa-trash"></i></a></td>';
+    $html .= '<td>
+    <a onclick="return eliminar()" href="datacredito.php?e='.$fila["Cedula"] .'" type="submit" class="btn btn-small btn-danger" name="eliminar" value="ok"><i class="fa-solid fa-trash"></i></a></td>';
     $html .= '<tr>';
 }
     }else{
@@ -105,4 +112,6 @@ while($fila = $resultado->fetch_assoc()){
     }
 
 echo json_encode($html, JSON_UNESCAPED_UNICODE);
+
+?>
 

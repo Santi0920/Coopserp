@@ -22,7 +22,6 @@
   </header>
   <?php 
   include "../models/conexion.php";
-  include "../controllers/eliminar_persona.php";
   ?>
   <!-- NAV DE LISTA-->
   <a name="arriba"></a>
@@ -124,6 +123,21 @@
     <label for="exampleInputEmail1" class="form-label fw-semibold">AGENCIA</label>
     <input type="text" class="form-control" name="agencia">
   </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label fw-semibold">FECHA</label>
+    <input type="date" class="form-control" name="archivo">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label fw-semibold">ADJUNTAR ARCHIVO PN</label>
+    <input type="file" class="form-control" name="archivo">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label fw-semibold">ADJUNTAR ARCHIVO SINTESIS</label>
+    <input type="file" class="form-control" name="archivo2">
+  </div>
  
   <button  type="submit" class="btn btn-primary" name="btnregistrar" value="ok" style="background-color: #005E56;">Registrar</button>
  
@@ -132,8 +146,10 @@
 <div class="col-8 p-4">
   <div class="mb-3">
     <form action="" method="post">
-      <label for="campo">Buscar:</label>
+      <label for="campo" class="mb-2">Buscar:</label>
       <input type="text" name="campo" id="campo" class="form-control w-50 filtrar"></input>
+
+
     </form>  
   </div>
     
@@ -146,13 +162,20 @@
       <th scope="col">SCORE</th>
       <th scope="col">CUENTA ASOCIADA</th>
       <th scope="col">AGENCIA</th>
+      <th scope="col">FECHA</th>
+      <th scope="col">PN</th>
+      <th scope="col">SINTESIS</th>
+      <th></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
-  <tbody id="content">
-    <?php include "../controllers/modificar_persona.php";
+  <?php 
+  include "../controllers/modificar_persona.php";
+  include "../controllers/eliminar_persona.php";
     ?>
+  <tbody id="content">
+    
   </tbody>
 </table>
 
@@ -239,21 +262,26 @@
       }
 
       function eliminar(){
-        var respuesta=confirm("Estas seguro que deseas eliminar?")
+        var respuesta=confirm("Estas seguro que deseas eliminar este registro?")
         return respuesta
       }
+    
 
-      const inputs = document.querySelectorAll('input');
+      // obtenga todas las etiquetas de etiqueta en el documento
+      var etiquetas = document.getElementsByTagName("label");
 
-inputs.forEach(el => {
-  el.addEventListener('blur', e => {
-    if(e.target.value) {
-      e.target.classList.add('dirty');
-    } else {
-      e.target.classList.remove('dirty');
-    }
-  })
-})
+      // agregue un evento "clic" a cada etiqueta
+      for (var i = 0; i < etiquetas.length; i++) {
+        etiquetas[i].addEventListener("click", function() {
+          // obtenga el valor del campo de entrada asociado
+          var campoValor = document.getElementById(this.getAttribute("for")).value;
+          // imprima el valor en la consola
+          console.log(campoValor);
+        });
+      }
+      
+
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

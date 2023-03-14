@@ -1,40 +1,31 @@
 <?php
 include "../models/conexion.php";
 
-if (isset($_GET['cedula'])) {
-  $cedula = $_GET['cedula'];
-
-  // Realizar la consulta SQL para obtener los datos del registro correspondiente
-  $sql = "SELECT * FROM persona WHERE cedula = $cedula";
-  $resultado = mysqli_query($mysqli, $sql);
-
-  if ($resultado) {
-    $row = mysqli_fetch_assoc($resultado);
-    $nombre = $row['nombre'];
-    $score = $row['score'];
-    $cuenta = $row['cuenta'];
-    $agencia = $row['agencia'];
-    
-
-    if (isset($_POST['submit'])) {
-      $cedula = $_POST['cedula'];
-      $nombre = $_POST['nombre'];
-      $score = $_POST['score'];
-      $cuenta = $_POST['cuenta'];
-      $agencia = $_POST['agencia'];
+if(!empty($_POST["editar"])){
+  if(!empty($_POST["cedula"]) and !empty($_POST["nombre"]) and !empty($_POST["score"]) and !empty($_POST["cuenta"]) and !empty($_POST["agencia"])){
       
-    
-      // Realizar la consulta SQL para actualizar los datos del registro correspondiente
-      $sql = "UPDATE persona SET nombre = '$nombre', score = $score, cuenta = '$cuenta', agencia = '$agencia' WHERE cedula = $cedula";
-      $resultado = mysqli_query($mysqli, $sql);
-    
+      $cedula=$_POST["cedula"];
+      $nombre=$_POST["nombre"];
+      $score=$_POST["score"];
+      $cuenta=$_POST["cuenta"];
+      $agencia=$_POST["agencia"];
+
+      $stmt = $mysqli->prepare("UPDATE persona SET Nombre = ?, Score = ?, CuentaAsociada = ?, Agencia = ? WHERE Cedula = ?");
+      $stmt->bind_param("sssss", $nombre, $score, $cuenta, $agencia, $cedula);
+      $resultado = $stmt->execute();
+  
       if ($resultado) {
-        echo "Registro actualizado correctamente!";
+        echo '<div class="alert alert-success id="alert-hide ">El usuario '.$nombre.' con identificación '.$cedula.' fue actualizado correctamente!</div>';
       } else {
-        echo "Error al actualizar el registro: " . mysqli_error($mysqli);
+        echo '<div class="alert alert-danger" id="alerta"">Error al actualizar el registro!"</div>';
       }
-    }
+    }else{
+      echo '<div class="alert alert-warning">Algunos de los campos estan vacios, error al actualizar el registro!</div>';
+
+      }
+    
   }
-}
+  
+  
 
 ?>

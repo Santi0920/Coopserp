@@ -112,7 +112,7 @@
     function enviarEmail($email, $nombre, $asunto, $cuerpo){
         require_once 'PHPMailer/PHPMailerAutoload.php';
 
-        $mail = new PHPMailer();
+        //$mail = new PHPMailer();
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'tipo de seguridad';
