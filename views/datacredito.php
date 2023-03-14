@@ -83,90 +83,78 @@
         <p class="copyright text-center">&copy;Coopserp Web</p>
 </div>
 
-<div class="container-fluid row p-5 mb-5">
+<div class="container-fluid row p-5 mb-1">
 <form class="col-4" method="POST">
   <h2 class="text-center p-3 text-secondary"><b>Datacrédito</b></h2>
   <?php 
-  include "../modules/conexion.php";
+  include "../models/conexion.php";
   include "../controllers/registro_persona.php";
   ?>
   
   <!--Label1-->  
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Nombre</label>
-    <input type="text" class="form-control" name="nombre">
+    <label for="exampleInputEmail1" class="form-label">CÉDULA</label>
+    <input type="text" class="form-control" name="cedula">
   </div>
   <!--Label2--> 
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Apellidos</label>
-    <input type="text" class="form-control" name="apellidos">
+    <label for="exampleInputEmail1" class="form-label">NOMBRE COMPLETO</label>
+    <input type="text" class="form-control" name="nombre">
   </div>
   <!--Label3-->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Cédula</label>
-    <input type="text" class="form-control" name="cedula">
+    <label for="exampleInputEmail1" class="form-label">SCORE</label>
+    <input type="text" class="form-control" name="score">
   </div>
   <!--Label4-->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
-    <input type="date" class="form-control" name="fecha">
+    <label for="exampleInputEmail1" class="form-label">CUENTA ASOCIADA</label>
+    <input type="text" class="form-control" name="cuenta">
   </div>
 
   <!--Label5-->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Correo</label>
-    <input type="text" class="form-control" name="correo">
+    <label for="exampleInputEmail1" class="form-label">AGENCIA</label>
+    <input type="text" class="form-control" name="agencia">
   </div>
  
   <button type="submit" class="btn btn-primary" name="btnregistrar" value="ok">Registrar</button>
  
 </form>
 
-<div class="col-8 p-5">
+<div class="col-8 p-4">
+  <div class="mb-3">
+    <form action="" method="post">
+      <label for="campo">Buscar:</label>
+      <input type="text" name="campo" id="campo"></input>
+    </form>  
+  </div>
+    
 <table class="table">
   <thead class="" style="background-color: #005E56;">
     <tr class="text-white">
-      <th scope="col">ID</th>
-      <th scope="col">NOMBRE(S)</th>
-      <th scope="col">APELLIDOS</th>
+      
       <th scope="col">CÉDULA</th>
-      <th scope="col">FECHA DE NACIMIENTO</th>
-      <th scope="col">CORREO</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col">NOMBRE COMPLETO</th>
+      <th scope="col">SCORE</th>
+      <th scope="col">CUENTA ASOCIADA</th>
+      <th scope="col">AGENCIA</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
-  <tbody>
-    <?php
-    include "../modules/conexion.php";
-    $sql = $conexion->query(" select * from empleado ");
-    while ($datos = $sql->fetch_object()) { ?>
-    <tr>
-      <td><?= $datos->IDempleado?></td>
-      <td><?= $datos->Nombre?></td>
-      <td><?= $datos->Apellidos?></td>
-      <td><?= $datos->Cedula?></td>
-      <td><?= $datos->Fecha_nac?></td>
-      <td><?= $datos->Correo?></td>
-      <td>
-        <a href="" class="btn btn-small btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
-        <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-trash"></i></a>
-      </td>
-    </tr>
-    <?php }
-    ?>
-    
-   
+  <tbody id="content">
     
   </tbody>
 </table>
 
-</div>
 
 </div>
 
+</div>
 
-        <!-- Pie de pagina -->
+        
+<!-- Pie de pagina -->
         <footer>
         <div class="container-fluid">
           <div class="row p-5 pb-2 text-white text-left" style="background-color: #005E56;">
@@ -219,7 +207,29 @@
           </div>
         </div>
       </footer>
+      
+  <script>
+    getData()
+      document.getElementById("campo").addEventListener("keyup", getData)
 
+      function getData(){
+      let input = document.getElementById("campo").value
+      let content = document.getElementById("content")
+      let url = "http://localhost/dashboard/Proyecto/controllers/buscar_persona.php"
+      let formaData = new FormData()
+      formaData.append('campo', input)
+
+      fetch(url, {
+        method: "POST",
+        body: formaData
+
+      }).then(response => response.json())
+      .then(data => {
+        console.log({data})
+        content.innerHTML = data
+      }).catch(err => console.log({err}))
+      }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
